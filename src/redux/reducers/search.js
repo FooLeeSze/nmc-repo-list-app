@@ -1,11 +1,11 @@
-import { SEARCH_REPOS, FETCH_ALL_REPOS_SUCCESS, FETCH_ALL_REPOS_FAILURE, FILTER_REPOS } from "../actions/search"; 
+import { SEARCH_REPOS, FETCH_ALL_REPOS_SUCCESS, FETCH_ALL_REPOS_FAILURE, FILTER_REPOS, CLEAR_SEARCH } from "../actions/search"; 
 
 // Initial state
 const initialState = {
     fullRepoList: [],
     isLoading: false,
     error: '',
-    fitleredList: [],
+    filteredList: [],
     keywords: ''
 }
 
@@ -48,7 +48,15 @@ export default function searchReducer(state = initialState, action) {
 
             return {
                 ...state,
-                fitleredList: filteredList
+                filteredList: filteredList
+            }
+
+        // Clear search
+        case CLEAR_SEARCH:
+            return {
+                ...state,
+                filteredList: [],
+                keywords: ''
             }
         
         default:
