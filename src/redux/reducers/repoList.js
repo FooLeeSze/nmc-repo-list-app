@@ -1,4 +1,4 @@
-import { LOAD_REPO_LIST, LOAD_REPO_LIST_SUCCESS, LOAD_REPO_LIST_FAILURE, LOAD_REPO_LIST_END, LOAD_REPO_LIST_REFRESH } from "../actions/repoList";
+import { LOAD_REPO_LIST, LOAD_REPO_LIST_SUCCESS, LOAD_REPO_LIST_FAILURE, LOAD_REPO_LIST_END } from "../actions/repoList";
 
 // Initial state
 const initialState = {
