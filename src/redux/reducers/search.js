@@ -1,4 +1,5 @@
-import { SEARCH_REPOS, FETCH_ALL_REPOS_SUCCESS, FETCH_ALL_REPOS_FAILURE, FILTER_REPOS, CLEAR_SEARCH } from "../actions/search"; 
+import { SEARCH_REPOS, FETCH_ALL_REPOS_SUCCESS, FETCH_ALL_REPOS_FAILURE, FILTER_REPOS, LOAD_MORE_SEARCHES, CLEAR_SEARCH } from "../actions/search"; 
+import { splitArray } from '../../helpers/helpers'
 
 // Initial state
 const initialState = {
@@ -6,6 +7,9 @@ const initialState = {
     isLoading: false,
     error: '',
     filteredList: [],
+    currentList: [],
+    currentPage: 0,
+    isListEnd: false,
     keywords: ''
 }
 
@@ -17,7 +21,7 @@ export default function searchReducer(state = initialState, action) {
         // Start search and fetch full repo list
         case SEARCH_REPOS: 
             return {
-                ...state, 
+                ...initialState, 
                 isLoading: true,
                 keywords: action.payload
             }
@@ -49,8 +53,33 @@ export default function searchReducer(state = initialState, action) {
 
             return {
                 ...state,
-                filteredList: filteredList,
+                filteredList: splitArray(filteredList, 7),
                 isLoading: false,
+            }
+
+        // Load search list based on page number
+        case LOAD_MORE_SEARCHES:
+
+            // Append next page items to list
+            const newList = [...state.currentList];
+            newList.push(...state.filteredList[state.currentPage]);
+
+            // Define next page
+            const nextPage = state.currentPage + 1;
+
+            // Check if list has ended (at last page)
+            let isEnd = false;
+
+            if (nextPage == state.filteredList.length) {
+                isEnd = !isEnd;
+            }
+
+            return {
+                ...state,
+                currentList: [...newList],
+                isLoading: false,
+                isListEnd: isEnd,
+                currentPage: nextPage
             }
 
         // Clear search

@@ -1,4 +1,4 @@
-import { call, delay, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { requestGetRepoList } from '../../api/getRepoList';
 import { LOAD_REPO_LIST, loadRepoListSuccess, loadRepoListEnd, loadRepoListFailure } from '../actions/repoList';
 
@@ -10,7 +10,6 @@ export function* loadRepoListSaga(action) {
     try {
         // Fetch repo list
         const response = yield call(requestGetRepoList, payload);
-        yield delay(1000);
 
         if (response.data.length > 0) {
             // If API call returns data, success

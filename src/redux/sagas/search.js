@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { requestGetRepoList } from '../../api/getRepoList';
-import { SEARCH_REPOS, fetchAllReposSuccess, fetchAllReposFailure, filterRepos } from '../actions/search'; 
+import { SEARCH_REPOS, fetchAllReposSuccess, fetchAllReposFailure, filterRepos, loadMoreSearches } from '../actions/search'; 
 
 const getFullRepoList = (state) => state.search.fullRepoList;
 
@@ -23,6 +23,8 @@ export function* searchReposSaga() {
 
     // Dispatch to filter repo based on keyword
     yield put(filterRepos())
+
+    yield put(loadMoreSearches(0))
 }
 
 // Watcher saga for FILTER_REPOS action type
