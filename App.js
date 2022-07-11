@@ -1,20 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { View } from 'react-native';
+import Home from './src/screens/Home';
+import prepStore from './src/redux/prepStore';
+
+// Redux store
+const store = prepStore();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>React Native Community</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <View style={{flex: 1}}>
+        <StatusBar 
+          barStyle='black'
+          backgroundColor='white'
+        />
+        <Home />
+      </View> 
+    </Provider>
+    
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

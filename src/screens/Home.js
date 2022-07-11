@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, StatusBar } from 'react-native';
 import RepoList from '../components/RepoList';
 import RepoSearchBar from '../components/RepoSearchBar';
+import { ACCENT_COLOR } from '../helpers/constants';
 
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
         <View style={styles.mainContainer}>
             
             <View style={styles.mainTitleContainer}>
-                <Text style={styles.mainTitle}>React Native Community <Text style={styles.titleHighlight}>Repositories</Text></Text>
+                <Text style={styles.mainTitle}adjustsFontSizeToFit={true} numberOfLines={2}>React Native Community <Text style={styles.titleHighlight}>Open Source Repositories</Text></Text>
             </View>
 
             <RepoSearchBar />
@@ -23,20 +24,19 @@ export default function Home() {
 
 const statusBarHeight = StatusBar.currentHeight;
 
-const ACCENT_COLOR = '#9984D4';
-
 const styles = StyleSheet.create({
     mainContainer: {
         paddingTop: statusBarHeight + 30,
         paddingLeft: 20,
         paddingRight: 20,
-        flex: 1
+        flex: 1,
+        backgroundColor: 'white'
     },
     mainTitleContainer: {
         paddingBottom: 20
     },  
     mainTitle: {
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: '900'
     },
     titleHighlight: {
