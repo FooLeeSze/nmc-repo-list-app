@@ -11,6 +11,7 @@ const initialState = {
 
 // Reducer
 export default function searchReducer(state = initialState, action) {
+    console.log(action.type)
     switch (action.type) {
 
         // Start search and fetch full repo list
@@ -48,7 +49,8 @@ export default function searchReducer(state = initialState, action) {
 
             return {
                 ...state,
-                filteredList: filteredList
+                filteredList: filteredList,
+                isLoading: false,
             }
 
         // Clear search
@@ -56,7 +58,8 @@ export default function searchReducer(state = initialState, action) {
             return {
                 ...state,
                 filteredList: [],
-                keywords: ''
+                keywords: '',
+                isLoading: false,
             }
         
         default:

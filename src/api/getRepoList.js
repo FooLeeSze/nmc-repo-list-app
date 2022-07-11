@@ -28,8 +28,8 @@ export const requestGetRepoList = (page) => {
     if (page > 0) {
         options.params.page = page;
         options.params.per_page = 7;
-        options.params.sort = 'pushed';
-        options.params.direction = 'desc';
+        options.params.sort = 'name';
+        options.params.direction = 'asc';
     } else {
         // else, fetch full list
         options.params.sort = 'name';
