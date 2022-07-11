@@ -15,7 +15,6 @@ const initialState = {
 
 // Reducer
 export default function searchReducer(state = initialState, action) {
-    console.log(action.type)
     switch (action.type) {
 
         // Start search and fetch full repo list
@@ -51,9 +50,16 @@ export default function searchReducer(state = initialState, action) {
                 repo.name.toLowerCase().includes(keywords.toLowerCase())
             ))
 
+            let paginatedList = [];
+
+            // Paginate list (chunk size of 7)
+            if (filteredList.length>0) {
+                paginatedList.push(...splitArray(filteredList, 7))
+            }
+
             return {
                 ...state,
-                filteredList: splitArray(filteredList, 7),
+                filteredList: paginatedList,
                 isLoading: false,
             }
 
@@ -62,15 +68,19 @@ export default function searchReducer(state = initialState, action) {
 
             // Append next page items to list
             const newList = [...state.currentList];
-            newList.push(...state.filteredList[state.currentPage]);
-
-            // Define next page
-            const nextPage = state.currentPage + 1;
-
-            // Check if list has ended (at last page)
             let isEnd = false;
 
-            if (nextPage == state.filteredList.length) {
+            const nextPage = state.currentPage + 1;
+
+            // If found results, append the results to list
+            if (state.filteredList.length > 0) {
+                newList.push(...state.filteredList[state.currentPage]);
+
+                // Check if list has ended (at last page)
+                if (nextPage == state.filteredList.length) {
+                    isEnd = !isEnd;
+                }
+            } else {
                 isEnd = !isEnd;
             }
 
