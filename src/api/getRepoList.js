@@ -1,20 +1,25 @@
 import axios from "axios";
 
-// API url and access token
+// API url
 const API_URL = 'https://api.github.com/users/react-native-community/repos';
-const GITHUB_TOKEN = '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';
+
+// Access token (if any)
+const GITHUB_TOKEN = null;
 
 // Request parameters
 const options = {
     method: 'get',
     url: API_URL,
     headers: {
-        'content-type': 'application/vnd.github+json',
-        'Authorization': `token ${GITHUB_TOKEN}`
+        'content-type': 'application/vnd.github+json'
     },
     params: {
         type: 'all'
     }
+}
+
+if (GITHUB_TOKEN) {
+    options.headers.Authorization = `token ${GITHUB_TOKEN}`;
 }
 
 
