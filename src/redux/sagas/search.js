@@ -24,6 +24,7 @@ export function* searchReposSaga() {
     // Dispatch to filter repo based on keyword
     yield put(filterRepos())
 
+    // Update search results list
     yield put(loadMoreSearches(0))
 }
 

@@ -63,7 +63,7 @@ export default function searchReducer(state = initialState, action) {
                 isLoading: false,
             }
 
-        // Load search list based on page number
+        // Update search results list based on page number
         case LOAD_MORE_SEARCHES:
 
             // Append next page items to list

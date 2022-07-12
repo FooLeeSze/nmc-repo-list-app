@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 
+// Hook to call fetch action and append more repos into a list
 export default function useLoadMoreRepos(initialState, repos, loadMoreFunction, skipFirstRun) {
     const [listPage, setListPage] = useState(initialState)
 

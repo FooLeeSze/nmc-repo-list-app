@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import RepoInfo from './RepoInfo';
 import { ACCENT_COLOR } from '../helpers/constants';
 
+
 export default function RepoInfoCard(props) {
 
     // Function to close modal

@@ -10,6 +10,7 @@ const iniRepoInfoState = {
     lang: ""
 }
 
+// Hook to set repo info
 export default function useRepoModal() {
     const [repoInfo, setRepoInfo] = useState(iniRepoInfoState)
 

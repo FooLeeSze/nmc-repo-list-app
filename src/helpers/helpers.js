@@ -1,3 +1,4 @@
+// Function to split an array into chunks of given chunk size
 export const splitArray = (arr, chunkSize) => {
 
     const resArr = [];
