@@ -8,7 +8,7 @@ React Native app that shows the open source repositories of [React Native Commun
 - View details of a repository (name, description, no. of stars, no. of forks, no. of watchers, language)
   
 ## Requirements
-- Expo
+- expo-cli
   
 ## Usage
 Install dependencies
