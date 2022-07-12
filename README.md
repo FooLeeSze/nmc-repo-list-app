@@ -18,3 +18,6 @@ Install dependencies
 Start application: 
 
 ```npm start```
+
+## Screenshots
+![RNC Repository App screenshots](app-screenshot.png)
