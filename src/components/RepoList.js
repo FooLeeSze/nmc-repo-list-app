@@ -39,6 +39,7 @@ export default function RepoList() {
                     isVisible={repoInfo.visible}
                     backdropOpacity={0}
                     onBackdropPress={() => {setRepoInfo('close')}}
+                    onBackButtonPress={() => {setRepoInfo('close')}}
                     style={styles.modal}
                 >
                     <View style={styles.repoCardContainer}>
