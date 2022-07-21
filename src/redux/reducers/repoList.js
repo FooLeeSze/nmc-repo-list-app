@@ -2,7 +2,7 @@ import { LOAD_REPO_LIST, LOAD_REPO_LIST_SUCCESS, LOAD_REPO_LIST_FAILURE, LOAD_RE
 
 // Initial state
 const initialState = {
-    repoList: [],
+    currentList: [],
     isLoading: false,
     isListEnd: false,
     error: ""
@@ -22,12 +22,12 @@ export default function repoReducer(state = initialState, action) {
         // If fetch data success, append new repo list to existing list
         case LOAD_REPO_LIST_SUCCESS:
             const newRepoList = action.payload.data;
-            const { repoList } = state;
+            const { currentList } = state;
 
             return {
                 ...state,
                 isLoading: false,
-                repoList: [...repoList, ...newRepoList],    
+                currentList: [...currentList, ...newRepoList],    
             };
 
         // Repo list maximum page reached

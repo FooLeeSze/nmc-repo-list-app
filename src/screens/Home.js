@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, StatusBar } from 'react-native';
-import RepoList from '../components/RepoList';
+import RepoListContainer from '../components/RepoListContainer';
 import RepoSearchBar from '../components/RepoSearchBar';
 import { ACCENT_COLOR } from '../helpers/constants';
 
@@ -16,7 +16,7 @@ export default function Home() {
 
             <RepoSearchBar />
             
-            <RepoList />
+            <RepoListContainer />
             
         </View>
     )
