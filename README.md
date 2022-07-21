@@ -11,7 +11,7 @@ React Native app that shows the open source repositories of [React Native Commun
 - expo-cli
   
 ## Usage
-Install dependencies
+Install dependencies:
 
 ```npm install```
 
