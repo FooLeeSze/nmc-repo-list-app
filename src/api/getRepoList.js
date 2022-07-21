@@ -11,7 +11,7 @@ const options = {
     method: 'get',
     url: API_URL,
     headers: {
-        'content-type': 'application/vnd.github+json'
+        'accept': 'application/vnd.github+json'
     },
     params: {
         type: 'all'
